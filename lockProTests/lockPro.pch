@@ -1,0 +1,34 @@
+//
+//  xmjr_pch.pch
+//  xmjr
+//
+//  Created by laoniu on 16/5/23.
+//  Copyright © 2016年 xiaoma. All rights reserved.
+//
+#ifdef __OBJC__
+#ifndef xmjr_pch_pch
+#define xmjr_pch_pch
+#define AFNETWORKING_ALLOW_INVALID_SSL_CERTIFICATES
+#import "XMConfig.h"
+#import "XMDefine.h"
+#import "XMBMDefineUtils.h"
+#import "XMMethod.h"
+#import "AppDelegate.h"
+#import "XMUserStateDataModel.h"
+#import "XMDataManager.h"
+#import "UIView+Toast.h"
+#import "XMTextField.h"
+#import "Masonry.h"
+#import "XMNavCustom.h"
+#import "XMUserInfoDataModel.h"
+#import "XMShowPicArrayViewController.h"
+#import "XMTransPkt.h"
+#import "XMUserModel.h"
+#import "XMToken.h"
+#import "XMInstanceDataCheck.h"
+#import "MJRefresh.h"
+#endif // OC的头文件
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* xmjr_pch_pch */

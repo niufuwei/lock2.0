@@ -1,0 +1,16 @@
+PODS:
+  - AliyunOSSiOS (2.10.4)
+
+DEPENDENCIES:
+  - AliyunOSSiOS
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AliyunOSSiOS
+
+SPEC CHECKSUMS:
+  AliyunOSSiOS: e5dcdba99963ca6b43fea863cead49423c5d4c75
+
+PODFILE CHECKSUM: 01b43cfbe8e53c4cb05a22c6ef189a266e6f133a
+
+COCOAPODS: 1.5.3
