@@ -123,7 +123,15 @@
         
         NSLog(@"%@",lock.macAddr);
         
-        [lockStatusDictinary setObject:@{@"lock":lock,@"status":@(NO),@"data":@[]} forKey:[NSString stringWithFormat:@"%@",lock.macAddr]];
+        if([lock.lockStat integerValue]==2){
+            //开
+            lockStatus = false;
+        }else{
+            lockStatus = true;
+            
+        }
+        
+        [lockStatusDictinary setObject:@{@"lock":lock,@"status":@(NO),@"lockStatus":@(lockStatus),@"data":@[]} forKey:[NSString stringWithFormat:@"%@",lock.macAddr]];
         [self checkLockStatus:lock enable:NO];
        
     }
