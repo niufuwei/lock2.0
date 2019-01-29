@@ -131,8 +131,8 @@
             
         }
         
-        [lockStatusDictinary setObject:@{@"lock":lock,@"status":@(YES),@"lockStatus":@(lockStatus),@"data":@[]} forKey:[NSString stringWithFormat:@"%@",lock.macAddr]];
-        [self checkLockStatus:lock enable:NO];
+        [lockStatusDictinary setObject:@{@"lock":lock,@"status":@(NO),@"lockStatus":@(lockStatus),@"data":@[]} forKey:[NSString stringWithFormat:@"%@",lock.macAddr]];
+        [self checkLockStatus:lock enable:YES];
        
     }
     
@@ -749,7 +749,7 @@
         
             [self notify:lockStatusString runtime:runtime plugVT:plugVT];
             
-            [self initLockStatus];
+//            [self initLockStatus];
 
             self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
 
@@ -766,7 +766,7 @@
 
             [self notify:lockStatusString runtime:runtime plugVT:plugVT];
             
-            [self initLockStatus];
+//            [self initLockStatus];
 
             self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
 
