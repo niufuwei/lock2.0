@@ -548,7 +548,7 @@
     Byte *byteData = (Byte *)malloc(len);
     memcpy(byteData, [data bytes], len);
     NSMutableString *commandArray = [[NSMutableString alloc] init];
-    
+
     NSString * allString = @"";
     
     // Byte数组转字符串
@@ -566,57 +566,56 @@
         
         NSLog(@"byteData = %@", str);
     }
-    
-    NSLog(@"byteData = %@", commandArray);
+    NSLog(@"byteData = %@", [commandArray uppercaseString]);
+
     
 
-    for(NSString * macAddrString in lockStatusDictinary.allKeys){
+    if((![XMMethod isNull:commandArray] && [lockStatusDictinary.allKeys containsObject:[commandArray uppercaseString]])){
         
+        //            [findDeviceArr addObject:[commandArray uppercaseString]];
+        
+        NSMutableArray * data = [[NSMutableArray alloc] init];
+        
+        if([allString length]==0)
+            return ;
+        NSString * status = [allString substringWithRange:NSMakeRange(4, 2)];
+        NSLog(@"byteData = %@", [commandArray uppercaseString]);
 
-        if((![XMMethod isNull:commandArray] && [[commandArray uppercaseString] isEqualToString:[macAddrString uppercaseString]])){
-            
-//            [findDeviceArr addObject:[commandArray uppercaseString]];
-
-            NSMutableArray * data = [[NSMutableArray alloc] init];
-            
-            if([allString length]==0)
-                return ;
-            NSString * status = [allString substringWithRange:NSMakeRange(4, 2)];
-            if([status isEqualToString:@"02"]){
-                //开
-                lockStatus = false;
-            }else{
-                lockStatus = true;
-                
-            }
-
-            [data addObject:@{@"peripheral":peripheral,@"advertisementData":advertisementData,@"wifi":RSSI}];
-            
-            XMLockRelat * lock =[[lockStatusDictinary objectForKey:macAddrString] objectForKey:@"lock"];
-            lock.lockStat = status;
-            //将锁的状态传过去
-            [lockStatusDictinary setObject:@{@"lock":lock,@"status":@(TRUE),@"lockStatus":@(lockStatus), @"data":data} forKey:macAddrString];
-            
-            dispatch_async(dispatch_get_main_queue(),^{
-                [self checkLockStatus:lock enable:YES];
-            
-            });
-            
+        if([status isEqualToString:@"02"]){
+            //开
+            lockStatus = false;
         }else{
+            lockStatus = true;
             
-            for(XMLockRelat * lock in self.device.rowDataArray){
-                
-                NSLog(@"%@",lock.macAddr);
-                if(![XMMethod isNull:commandArray] && ![[lock.macAddr uppercaseString] isEqualToString:[commandArray uppercaseString]]){
-                    [lockStatusDictinary setObject:@{@"lock":lock,@"status":@(NO),@"data":@[]} forKey:[NSString stringWithFormat:@"%@",lock.macAddr]];
-                    [self checkLockStatus:lock enable:NO];
-                }
-                
-            }
-       
-
         }
+        
+        [data addObject:@{@"peripheral":peripheral,@"advertisementData":advertisementData,@"wifi":RSSI}];
+        
+        XMLockRelat * lock =[[lockStatusDictinary objectForKey:[commandArray uppercaseString]] objectForKey:@"lock"];
+        lock.lockStat = status;
+        //将锁的状态传过去
+        [lockStatusDictinary setObject:@{@"lock":lock,@"status":@(TRUE),@"lockStatus":@(lockStatus), @"data":data} forKey:[commandArray uppercaseString]];
+        
+        dispatch_async(dispatch_get_main_queue(),^{
+            [self checkLockStatus:lock enable:YES];
+            
+        });
+        
     }
+//    else{
+//
+//        for(XMLockRelat * lock in self.device.rowDataArray){
+//
+//            NSLog(@"%@",lock.macAddr);
+//            if(![XMMethod isNull:commandArray] && ![[lock.macAddr uppercaseString] isEqualToString:[commandArray uppercaseString]]){
+//                [lockStatusDictinary setObject:@{@"lock":lock,@"status":@(NO),@"data":@[]} forKey:[NSString stringWithFormat:@"%@",lock.macAddr]];
+//                [self checkLockStatus:lock enable:NO];
+//            }
+//
+//        }
+//
+//
+//    }
 
 }
 

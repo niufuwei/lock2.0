@@ -3223,7 +3223,7 @@
 					"$(PROJECT_DIR)/lockPro/itool/baiduMap",
 				);
 				GCC_INPUT_FILETYPE = automatic;
-				GCC_PREFIX_HEADER = "/Users/jiangchuanshang/Downloads/lockNew-master 2/lockProTests/lockPro.pch";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/lockProTests/lockPro.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -3267,7 +3267,7 @@
 					"$(PROJECT_DIR)/lockPro/itool/baiduMap",
 				);
 				GCC_INPUT_FILETYPE = automatic;
-				GCC_PREFIX_HEADER = "/Users/jiangchuanshang/Downloads/lockNew-master 2/lockProTests/lockPro.pch";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/lockProTests/lockPro.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
