@@ -132,7 +132,7 @@
         }
         
         [lockStatusDictinary setObject:@{@"lock":lock,@"status":@(NO),@"lockStatus":@(lockStatus),@"data":@[]} forKey:[NSString stringWithFormat:@"%@",lock.macAddr]];
-        [self checkLockStatus:lock enable:YES];
+        [self checkLockStatus:lock enable:NO];
        
     }
     
