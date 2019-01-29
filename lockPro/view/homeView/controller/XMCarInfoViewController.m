@@ -131,7 +131,7 @@
             
         }
         
-        [lockStatusDictinary setObject:@{@"lock":lock,@"status":@(NO),@"lockStatus":@(lockStatus),@"data":@[]} forKey:[NSString stringWithFormat:@"%@",lock.macAddr]];
+        [lockStatusDictinary setObject:@{@"lock":lock,@"status":@(YES),@"lockStatus":@(lockStatus),@"data":@[]} forKey:[NSString stringWithFormat:@"%@",lock.macAddr]];
         [self checkLockStatus:lock enable:NO];
        
     }
@@ -707,7 +707,7 @@
             dataArr[5]=(OTPInt&0xff000000)>> 24;
 
 
-            [LCLoadingHUD showLoading:lockStatus?@"正在解封，请稍候":@"正在施封，请稍候"];
+            [LCLoadingHUD showLoading:lockStatus?@"正在施封，请稍候":@"正在解封，请稍候"];
             NSData *data = [NSData dataWithBytes:dataArr length:19];
             //    [self.myPeripheral writeValue:data forDescriptor:CBCharacteristicWriteWithResponse];
             [peripheral writeValue:data forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
